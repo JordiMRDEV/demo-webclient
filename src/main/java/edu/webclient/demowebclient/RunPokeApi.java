@@ -16,9 +16,10 @@ public class RunPokeApi implements ApplicationRunner {
             var response = client.get()
                     .uri(uriBuilder -> uriBuilder
                             .path("berry/{id}")
-                            .build(1L))
+                            .build("1"))
                     .retrieve()
-                    .toEntity(Berry.class).block();
+                    .toEntity(Berry.class)
+                    .block();
 
             assert response != null;
             var berry = response.getBody();
